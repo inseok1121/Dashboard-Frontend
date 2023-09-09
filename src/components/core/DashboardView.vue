@@ -17,14 +17,14 @@
                 <v-col xs5>
                   <v-card-title primay-title>
                     <v-avatar>
-                      <v-icon :icon="`mdiSvg:${mdiAccount}`"></v-icon>
+                      <v-icon size="large" color="success">mdi-account</v-icon>
                     </v-avatar>
                   </v-card-title>
                 </v-col>
               </v-layout>
               <v-divider light></v-divider>
               <v-card-actions class="pa-2">
-                <v-icon small color="primary">update</v-icon>
+                <v-icon size="small" color="primary">mdi-update</v-icon>
                 <span class="grey--text caption font-italic">&nbsp;5분전</span>
                 <v-spacer></v-spacer>
               </v-card-actions>
