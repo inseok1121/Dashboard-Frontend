@@ -1,6 +1,7 @@
 <template>
   <v-main>
     <v-container fruid grid-list-md>
+      
       <v-layout wrap row>
         <v-col xs12 sm6 md3 class="pb-2" v-for="i in 4" :key="i">
           <v-card>
@@ -32,13 +33,23 @@
           </v-card>
         </v-col>
       </v-layout>
+
       <v-layout wrap row>
         <v-col xs12 sm4 class="pb-2" v-for="i in 3" :key="i">
-          <v-card height="140px" :color="`#${i}12345`">
-            간단한 차트
-          </v-card>
+          <v-container pa-1>
+            <v-layout row>
+              <v-col xs7>
+                <v-card-title primary-title>
+                  <span class="grey--text">주간 게시물 현황</span>
+                </v-card-title>
+                <v-card-text>
+                </v-card-text>
+              </v-col>
+            </v-layout>
+          </v-container>
         </v-col>
       </v-layout>
+
       <v-layout wrap row>
         <v-col xs12 sm4 class="pb-2" v-for="i in 2" :key="i">
           <v-card height="290px" :color="`#${i}54321`">
@@ -46,6 +57,7 @@
           </v-card>
         </v-col>
       </v-layout>
+
     </v-container>
   </v-main>
 </template>
