@@ -9,19 +9,32 @@
         <v-btn @click="toPage">Page2</v-btn>
       </li>
       <li>
-        <h5>{{ this.$store.state.counter }}</h5>
+        <h5>{{ this.counter }}</h5>
       </li>
     </ul>
   </v-app-bar>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
-  methods:{
-    toPage(){
+
+  setup(){
+    const store = useStore();
+
+    const counter = store.state.counter.counter;
+
+    const toPage = () => {
       console.log("TO PAGE1");
+    };
+
+    return {
+      toPage,
+      counter
     }
   }
+  
 }
 </script>
 

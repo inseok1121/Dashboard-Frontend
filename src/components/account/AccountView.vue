@@ -13,10 +13,10 @@ import { useStore } from 'vuex';
 export default defineComponent({
   setup() {
     const store = useStore();
-    
+
     const addOne = () => {
       console.log("AddOne");
-      store.commit('increment')
+      store.commit('counter/increment')
     }
 
     return {
