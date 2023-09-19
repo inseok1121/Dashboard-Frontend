@@ -16,7 +16,7 @@ export default defineComponent({
 
     const addOne = () => {
       console.log("AddOne");
-      store.commit('counter/increment')
+      store.commit('increment')
     }
 
     return {
