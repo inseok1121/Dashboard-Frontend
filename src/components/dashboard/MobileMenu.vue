@@ -7,7 +7,7 @@
       >
         <v-list-item
           prepend-avatar="https://m.figurepresso.com/web/product/big/201704/5392_shop1_318802.jpg"
-          title="John Leider"
+          :title="name"
           nav
         >
           <template v-slot:append>
@@ -31,18 +31,43 @@
       </v-navigation-drawer>
 </template>
 <script>
-  export default {
-    props: ['menuItems'],
-    methods: {
-      handleMenuClick(routeName){
-        this.$emit('menu-click', routeName);
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+export default {
+  props: ['menuItems'],
+  setup() {
+    const name = ref('');
+    const drawer = ref(true);
+    const rail = ref(true);
+
+    const fetchName = async () => {
+      try {
+        const response = await axios.get('/api/v1/account/name');
+        const data = response.data;
+        name.value = data;
+      } catch (error) {
+        console.error('데이터를 불러오는 중 에러 발생:', error);
       }
-    },
-    data () {
-      return {
-        drawer: true,
-        rail: true,
-      }
-    },
-  }
+    };
+    const handleMenuClick = (routeName) => {
+      // $emit을 사용하여 이벤트를 발생시킵니다.
+      // 부모 컴포넌트에서 'menu-click' 이벤트를 리스닝하도록 합니다.
+      // routeName을 인자로 전달합니다.
+      this.$emit('menu-click', routeName);
+    };
+
+    onMounted(() => {
+      fetchName();
+    });
+
+    // 컴포넌트 내에서 사용 가능한 데이터와 메서드를 반환합니다.
+    return {
+      name,
+      drawer,
+      rail,
+      handleMenuClick,
+    };
+  },
+};
 </script>

@@ -4,12 +4,14 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import router from './router'
 import counterStore from './store/common'
+import axios from 'axios'
 
 loadFonts()
 
-createApp(App)
-  .use(vuetify)
-  .use(router)
-  .use(counterStore)
-  .mount('#app')
+const app = createApp(App)
+app.use(vuetify)
+app.use(router)
+app.use(counterStore)
+app.config.globalProperties.$axios = axios
+app.mount('#app')
 
