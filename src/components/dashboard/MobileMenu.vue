@@ -31,34 +31,28 @@
       </v-navigation-drawer>
 </template>
 <script>
-import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { ref, onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   props: ['menuItems'],
-  setup() {
-    const name = ref('');
+  emits: ['menu-click'],
+  setup(props, ctx) {
+    const store = useStore();
+    const name = computed (() =>  store.state.name );
     const drawer = ref(true);
     const rail = ref(true);
-
-    const fetchName = async () => {
-      try {
-        const response = await axios.get('/api/v1/account/name');
-        const data = response.data;
-        name.value = data;
-      } catch (error) {
-        console.error('데이터를 불러오는 중 에러 발생:', error);
-      }
-    };
+    
+   
     const handleMenuClick = (routeName) => {
       // $emit을 사용하여 이벤트를 발생시킵니다.
       // 부모 컴포넌트에서 'menu-click' 이벤트를 리스닝하도록 합니다.
       // routeName을 인자로 전달합니다.
-      this.$emit('menu-click', routeName);
+      console.log("ttt");
+      ctx.emit('menu-click', routeName);
     };
 
     onMounted(() => {
-      fetchName();
     });
 
     // 컴포넌트 내에서 사용 가능한 데이터와 메서드를 반환합니다.
