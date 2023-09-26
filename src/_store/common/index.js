@@ -4,11 +4,11 @@ import mutations from "./mutations.js"
 import getters from "./getters.js"
 import actions from "./actions.js"
 
-const store = createStore({
+const commonStore = createStore({
   state,
   mutations,
   getters,
   actions
 })
 
-export default store;
+export default commonStore;

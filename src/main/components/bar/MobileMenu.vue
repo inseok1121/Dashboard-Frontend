@@ -39,7 +39,7 @@ export default {
   emits: ['menu-click'],
   setup(props, ctx) {
     const store = useStore();
-    const name = computed (() =>  store.state.name );
+    const name = computed (() =>  store.state.account.name );
     const drawer = ref(true);
     const rail = ref(true);
     
