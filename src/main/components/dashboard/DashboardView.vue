@@ -49,9 +49,9 @@
 
 <script>
 import { defineComponent } from "vue";
-import smallCard from '@/components/dashboard/card/smallCard.vue'
-import chartCard from '@/components/dashboard/card/chartCard.vue'
-import boardCard from '@/components/dashboard/card/boardCard.vue'
+import smallCard from './card/smallCard.vue'
+import chartCard from './card/chartCard.vue'
+import boardCard from './card/boardCard.vue'
 
 export default defineComponent({
   components: {

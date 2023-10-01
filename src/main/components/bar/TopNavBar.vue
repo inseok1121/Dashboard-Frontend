@@ -17,13 +17,13 @@
 
 <script>
 import { useStore } from 'vuex';
-
+import { computed } from 'vue';
 export default {
 
   setup(){
     const store = useStore();
 
-    const counter = store.state.counter.counter;
+    const counter = computed(() => store.state.counter);
 
     const toPage = () => {
       console.log("TO PAGE1");
