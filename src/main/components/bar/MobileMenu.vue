@@ -32,14 +32,12 @@
 </template>
 <script>
 import { ref, onMounted, computed } from 'vue';
-import { useStore } from 'vuex';
 
 export default {
   props: ['menuItems'],
   emits: ['menu-click'],
   setup(props, ctx) {
-    const store = useStore();
-    const name = computed (() =>  store.state.account.name );
+    const name = computed (() => "");
     const drawer = ref(true);
     const rail = ref(true);
     

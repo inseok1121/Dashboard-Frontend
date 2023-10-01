@@ -1,11 +1,30 @@
 <template>
   <div class="flex-container">
     <div class="image-panel"></div>
-    <div class="login-panel"></div>
+    <div class="login-panel">
+      <button @click="toMain">login</button>
+    </div>
   </div>
 </template>
 <script>
+import { useRouter } from 'vue-router'
 export default {
+  setup(){
+    const router = useRouter();
+
+    const toMain = () => {
+      router.push({
+        path: '/main',
+        query: {
+          requiredAuth: true
+        },
+      })
+    }
+    
+    return {
+      toMain
+    }
+  }
 
 }
 </script>

@@ -1,21 +1,25 @@
 const mainRouter = [
   {
-    path: '/dashboard',
+    path: '/main',
+    redirect: '/main/dashboard'
+  },
+  {
+    path: '/main/dashboard',
     name: 'Dashboard',
     component: () => import('../components/dashboard/DashboardView.vue')
   },
   {
-    path: '/account',
+    path: '/main/account',
     name: 'Account',
     component: () => import('../components/account/AccountView.vue')
   },
   {
-    path: '/chart',
+    path: '/main/chart',
     name: 'Chart',
     component: () => import('../components/chart/ChartView.vue')
   },
   {
-    path: '/rule',
+    path: '/main/rule',
     name: 'Rule',
     component: () => import('../components/rule/RuleView.vue')
   },

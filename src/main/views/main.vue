@@ -10,9 +10,9 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import TopNavBar from "./components/dashboard/TopNavBar.vue";
-import ContentFooter from "./components/dashboard/ContentFooter.vue";
-import MobileMenu from "./components/dashboard/MobileMenu.vue";
+import TopNavBar from "../components/bar/TopNavBar.vue";
+import ContentFooter from "../components/bar/ContentFooter.vue";
+import MobileMenu from "../components/bar/MobileMenu.vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
