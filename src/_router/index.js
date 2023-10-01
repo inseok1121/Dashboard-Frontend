@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
   if(to.path === '/login'){
     next();
   }else{
-    if(to.meta.requiredAuth && !isLoggedIn()){
+      if(to.meta.requiredAuth && isLoggedIn()){
       console.log("RequiredAuth is True");
       next();
     }else{
@@ -36,7 +36,6 @@ router.beforeEach((to, from, next) => {
       next('/login');
     }
   }
-  
 })
 
 function isLoggedIn(){

@@ -22,19 +22,11 @@
 <script>
 import { useRouter } from 'vue-router'
 import { computed, ref } from "vue";
+import axios from 'axios';
 
 export default {
   setup(){
     const router = useRouter();
-
-    const toMain = () => {
-      router.push({
-        path: '/main',
-        query: {
-          requiredAuth: true
-        },
-      })
-    };
 
     const email = ref("");
     const hidePassword = ref(true);
@@ -43,10 +35,31 @@ export default {
     const passwordFieldIcon = computed(() => hidePassword.value ? "fa-eye" : "fa-eye-slash");
     const passwordFieldType = computed(() => hidePassword.value ? "password" : "text");
 
-    const doLogin = () => alert("Not implemented yet :O");
+    const doLogin = async () => {
+      console.log(email.value);
+      console.log(password.value);
+
+      try{
+        await axios.post('/api/v1/account/login', {
+          email: email.value,
+          password: password.value
+        }).then(res =>{
+          console.log(res.data);
+          router.push({
+            path: '/main',
+            query: {
+              requiredAuth: true
+            },
+          })
+        });
+
+      }catch(err){
+        alert(err);
+      }
+    }
+
       
     return {
-      toMain,
       email,
       password,
       passwordFieldIcon,
