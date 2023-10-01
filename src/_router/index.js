@@ -25,13 +25,18 @@ const store = useStore();
 
 router.beforeEach((to, from, next) => {
 
-  if(to.meta.requiredAuth && !isLoggedIn()){
-    console.log("RequiredAuth is True");
+  if(to.path === '/login'){
     next();
   }else{
-    console.log("RequiredAuth is False");
-    next('/login');
+    if(to.meta.requiredAuth && !isLoggedIn()){
+      console.log("RequiredAuth is True");
+      next();
+    }else{
+      console.log("RequiredAuth is False");
+      next('/login');
+    }
   }
+  
 })
 
 function isLoggedIn(){
